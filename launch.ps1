@@ -1,0 +1,1 @@
+start "C:\Program Files\CLaunch\CLaunch.exe"
