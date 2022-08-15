@@ -14,7 +14,7 @@ CLAUNCH_PATH = 'C:\Program Files\CLaunch\CLaunch.exe'
 CLAUNCH_PID = 0
 
 
-def checkProcess() -> None:
+def checkProcess():
     global CLAUNCH_PATH, CLAUNCH_PID, VALORANT_PATH
     VALORANT_DETECTED = False
     CLAUNCH_DETECTED = False
@@ -54,7 +54,7 @@ def checkProcess() -> None:
 # 定期実行
 
 
-def setInterval(s: int, callback: function) -> None:
+def setInterval(s, callback):
     t0 = time.time()
     tN = 0
     while True:
