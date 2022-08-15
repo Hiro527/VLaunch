@@ -40,16 +40,17 @@ def checkProcess():
             app_name="VLaunch",
             timeout=5
         )
-    if not (VALORANT_DETECTED & CLAUNCH_DETECTED):
-        # VALORANT未検出でCLaunchが動いていないときの処理
-        subprocess.Popen(r'powershell ./launch.ps1', shell=True)
-        print('[INFO] CLaunch Started')
-        notification.notify(
-            title="自動検知モード",
-            message="CLaunchを起動しました。",
-            app_name="VLaunch",
-            timeout=5
-        )
+    if not VALORANT_DETECTED:
+        if not CLAUNCH_DETECTED:
+            # VALORANT未検出でCLaunchが動いていないときの処理
+            subprocess.Popen(r'powershell ./launch.ps1', shell=True)
+            print('[INFO] CLaunch Started')
+            notification.notify(
+                title="自動検知モード",
+                message="CLaunchを起動しました。",
+                app_name="VLaunch",
+                timeout=5
+            )
 
 # 定期実行
 
