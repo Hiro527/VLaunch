@@ -8,14 +8,21 @@ from pystray import Icon, Menu, MenuItem
 import time
 import subprocess
 from PIL import Image
+import sys
+import os
 
 VALORANT_PATH = 'C:\Riot Games\VALORANT\live\VALORANT.exe'
 CLAUNCH_PATH = 'C:\Program Files\CLaunch\CLaunch.exe'
 
 CLAUNCH_PID = 0
 
+def solvePath(path):
+    return os.path.join(sys._MEIPASS, path)
+
+SCRIPT_PATH = solvePath('assets/scripts/launch.ps1')
+
 def checkProcess(icon):
-    global CLAUNCH_PATH, CLAUNCH_PID, VALORANT_PATH
+    global CLAUNCH_PATH, CLAUNCH_PID, VALORANT_PATH, SCRIPT_PATH
     VALORANT_DETECTED = False
     CLAUNCH_DETECTED = False
     proc = psutil.process_iter()
@@ -38,7 +45,7 @@ def checkProcess(icon):
     if not VALORANT_DETECTED:
         if not CLAUNCH_DETECTED:
             # VALORANT未検出でCLaunchが動いていないときの処理
-            subprocess.Popen(r'powershell ./launch.ps1', shell=True)
+            subprocess.Popen(['powershell', SCRIPT_PATH], shell=True)
             print('[INFO] CLaunch Started')
             icon.notify('CLaunchを起動', '自動検知モード')
 
@@ -61,7 +68,7 @@ def quitApp(icon):
     icon.visible = False
     TrayIcon.stop()
 
-TrayImage = Image.open('./assets/VLaunch.ico')
+TrayImage = Image.open(solvePath('assets/img/VLaunch.ico'))
 TrayMenu = Menu(
     MenuItem(
         '終了',
