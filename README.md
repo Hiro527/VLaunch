@@ -15,7 +15,7 @@ CLaunchの影響でVALORANTが快適にプレイできない問題を解決で�
 
 - VALORANTを検知すると自動でCLaunchがキルされます。
 - VALORANTが検知されておらず、CLaunchも起動していない場合は自動でCLaunchを起動します。
-- タスクトレイにあるアイコン![ロゴ](./assets/img/VLaunch.svg)を右クリックして終了することが出来ます。
+- タスクトレイにあるアイコン<img src="./assets/img/VLaunch.svg" width="16px">を右クリックして終了することが出来ます。
 
 # PC起動時に自動実行する方法
 1. VLaunch.exeのショートカットを作成し、コピー(`Ctrl+C`)してください。
