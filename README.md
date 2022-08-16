@@ -34,5 +34,5 @@ $ pyinstaller main.py --onefile --noconsole --icon="./assets/img/VLaunch.ico" --
 ```
 4. ビルドの成果物は`dist/VLaunch.exe`に出力されています。
 # 連絡先
-Twitter: [@fps_Hiro527](https://twitter.com/fps_Hiro527)
+Twitter: [@fps_Hiro527](https://twitter.com/fps_Hiro527)<br>
 Discord: @Hiro527#7777
