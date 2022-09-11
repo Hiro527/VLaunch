@@ -29,3 +29,4 @@ jobs:
         with:
           files: |
             dist/VLaunch.exe
+          draft: true
