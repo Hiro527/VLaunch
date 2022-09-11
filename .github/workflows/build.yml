@@ -27,8 +27,8 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          name: VLaunch ${{ github.ref }}
+          name: VLaunch ${{ github.github.ref_name }}
           files: |
             dist/VLaunch.exe
           draft: true
-          prerelease: contains( ${{ github.ref }}, 'beta' )
+          prerelease: contains( github.ref_name, 'beta' )
