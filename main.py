@@ -16,10 +16,16 @@ CLAUNCH_PATH = 'C:\Program Files\CLaunch\CLaunch.exe'
 
 CLAUNCH_PID = 0
 
+
 def solvePath(path):
-    return os.path.join(sys._MEIPASS, path)
+    try:
+        return os.path.join(sys._MEIPASS, path)
+    except Exception:
+        return os.path.join(os.path.dirname(__file__), path)
+
 
 SCRIPT_PATH = solvePath('assets/scripts/launch.ps1')
+
 
 def checkProcess(icon):
     global CLAUNCH_PATH, CLAUNCH_PID, VALORANT_PATH, SCRIPT_PATH
@@ -45,7 +51,7 @@ def checkProcess(icon):
     if not VALORANT_DETECTED:
         if not CLAUNCH_DETECTED:
             # VALORANT未検出でCLaunchが動いていないときの処理
-            subprocess.Popen(['powershell', SCRIPT_PATH], shell=True)
+            subprocess.Popen(CLAUNCH_PATH, shell=True)
             print('[INFO] CLaunch Started')
             icon.notify('CLaunchを起動', '自動検知モード')
 
@@ -68,12 +74,13 @@ def quitApp(icon):
     icon.visible = False
     TrayIcon.stop()
 
+
 TrayImage = Image.open(solvePath('assets/img/VLaunch.ico'))
 TrayMenu = Menu(
     MenuItem(
         '終了',
         quitApp
-        )
+    )
 )
 TrayIcon = Icon(name='VLaunch', icon=TrayImage, title='自動検知モード', menu=TrayMenu)
 TrayIcon.run(setInterval)
